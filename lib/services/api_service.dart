@@ -4,10 +4,12 @@ import 'package:http/http.dart' as http;
 import 'package:toonflix/models/webtoon_model.dart';
 
 class ApiService {
-  final String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
-  final String today = "today";
+  static const String baseUrl =
+      "https://webtoon-crawler.nomadcoders.workers.dev";
+  static const String today = "today";
 
-  Future<List<WebtoonModel>> getTodaysToons() async {
+//Future 안에 List넣기
+  static Future<List<WebtoonModel>> getTodaysToons() async {
     List<WebtoonModel> webtoonInstances = [];
     final url = Uri.parse('$baseUrl/$today');
     final response = await http.get(url);
@@ -19,6 +21,9 @@ class ApiService {
       //200은 요청 성공의 뜻
       final List<dynamic> webtoons = jsonDecode(response.body);
       for (var webtoon in webtoons) {
+        // 이렇게 해도됨
+        // final instance = WebtoonModel.fromJson(webtoon);
+        // webtoonInstances.add(instance);
         webtoonInstances.add(WebtoonModel.fromJson(webtoon));
       }
       return webtoonInstances;

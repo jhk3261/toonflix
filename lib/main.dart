@@ -3,7 +3,6 @@ import 'package:toonflix/screens/homeScreen.dart';
 import 'package:toonflix/services/api_service.dart';
 
 void main() {
-  ApiService().getTodaysToons();
   runApp(const App());
 }
 
