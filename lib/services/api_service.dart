@@ -1,10 +1,14 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+import 'package:toonflix/models/webtoon_model.dart';
 
 class ApiService {
   final String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
   final String today = "today";
 
-  void getTodaysToons() async {
+  Future<List<WebtoonModel>> getTodaysToons() async {
+    List<WebtoonModel> webtoonInstances = [];
     final url = Uri.parse('$baseUrl/$today');
     final response = await http.get(url);
     //Future 타입? = 미래에 받을 값을 알려줌 , 완료되었을 때 Response에 반환값이 저장
@@ -13,8 +17,11 @@ class ApiService {
 
     if (response.statusCode == 200) {
       //200은 요청 성공의 뜻
-      print(response.body);
-      return;
+      final List<dynamic> webtoons = jsonDecode(response.body);
+      for (var webtoon in webtoons) {
+        webtoonInstances.add(WebtoonModel.fromJson(webtoon));
+      }
+      return webtoonInstances;
     }
     throw Error();
   }
