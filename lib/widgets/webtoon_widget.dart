@@ -14,6 +14,7 @@ class Webtoon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      //탭, 드래그, 마우스 이동 등 감지 가능
       onTap: () {
         Navigator.push(
           context,

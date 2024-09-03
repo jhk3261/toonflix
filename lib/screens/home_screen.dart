@@ -10,12 +10,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const twentyFiveMinutes = 5;
+  static const twentyFiveMinutes = 1500;
   int totalSeconds = twentyFiveMinutes;
   bool isRunning = false;
-  int totalPorodoros = 0;
-  //지금 초기화 x, onStartPressed가 실행될때마다 timer 초기화 -> late 사용
   late Timer timer;
+  int totalPorodoros = 0;
+
+  //지금 초기화 x, onStartPressed가 실행될때마다 timer 초기화 -> late 사용
 
   void onTick(Timer timer) {
     if (totalSeconds == 0) {
@@ -62,9 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
   String format(int seconds) {
     var duration = Duration(seconds: seconds);
     //진행순서
-    // print(duration.toString().split("."));
-    // print(duration.toString().split(".").first);
-    // print(duration.toString().split(".").first.substring(2,7));
+    print(duration.toString());
+    print(duration.toString().split("."));
+    print(duration.toString().split(".").first);
+    print(duration.toString().split(".").first.substring(2, 7));
     return duration.toString().split(".").first.substring(2, 7);
   }
 
@@ -81,6 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
               alignment: Alignment.bottomCenter, //찾아보기?
               child: Text(
                 format(totalSeconds),
+                // '$totalSeconds',
                 style: TextStyle(
                   color: Theme.of(context).cardColor,
                   fontSize: 89,
