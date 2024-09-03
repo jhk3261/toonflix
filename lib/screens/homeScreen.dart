@@ -6,6 +6,8 @@ import 'package:toonflix/widgets/webtoon_widget.dart';
 class Homescreen extends StatelessWidget {
   Homescreen({super.key});
 
+//getTodaysToons은 어느 argument를 요구하지 않음 -> stateless 사용
+//getToonById는 id라는 argument 요구 -> state 사용 (initState사용을 위함 -> id를 받아와야하기 때문에)
   final Future<List<WebtoonModel>> webtoons = ApiService.getTodaysToons();
 
   @override
