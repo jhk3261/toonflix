@@ -20,7 +20,7 @@ class Homescreen extends StatelessWidget {
         surfaceTintColor: Colors.white,
         shadowColor: Colors.black,
         backgroundColor: Colors.white,
-        foregroundColor: Colors.green,
+        foregroundColor: const Color(0XFF6FA1EC),
         title: const Text(
           "오늘의 웹툰",
           style: TextStyle(
